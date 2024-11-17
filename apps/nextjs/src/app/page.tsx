@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import { api, HydrateClient } from "~/trpc/server";
+import { HydrateClient, api } from "~/trpc/server";
 
 export const runtime = "edge";
 

@@ -4,6 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "lint": "biome check .",
+    "lint:fix": "biome check . --write",
     "build": "bun with-env next build",
     "clean": "git clean -xdf .cache .next .turbo node_modules",
     "dev": "bun with-env next dev",
@@ -30,6 +32,7 @@
     "zod": "latest"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.8.3",
     "@dank/tailwind-config": "workspace:*",
     "@dank/typescript-config": "workspace:*",
     "@types/node": "^20.16.11",

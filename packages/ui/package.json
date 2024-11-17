@@ -10,16 +10,17 @@
     },
     "./styles.css": "./dist/index.css"
   },
-  "sideEffects": [
-    "**/*.css"
-  ],
+  "sideEffects": ["**/*.css"],
   "types": "./dist/index.d.mts",
   "scripts": {
+    "lint": "biome check .",
+    "lint:fix": "biome check . --write",
     "build": "tsup",
     "dev": "cross-env TSUP_WATCH=true tsup --watch",
     "generate:component": "turbo gen react-component"
   },
   "devDependencies": {
+    "@biomejs/biome": "latest",
     "@dank/tailwind-config": "workspace:^",
     "@dank/typescript-config": "workspace:^",
     "@turbo/gen": "^1.12.4",

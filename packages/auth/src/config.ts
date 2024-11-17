@@ -1,10 +1,10 @@
+import { skipCSRFCheck } from "@auth/core";
+import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import type {
   DefaultSession,
   NextAuthConfig,
   Session as NextAuthSession,
 } from "next-auth";
-import { skipCSRFCheck } from "@auth/core";
-import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import Discord from "next-auth/providers/discord";
 
 import { db } from "@dank/db/client";

@@ -38,9 +38,6 @@
     "test": {
       "dependsOn": ["^test"]
     },
-    "lint": {
-      "dependsOn": ["^lint"]
-    },
     "analyze": {
       "dependsOn": ["^analyze"]
     },
@@ -62,6 +59,19 @@
     "studio": {
       "cache": false,
       "persistent": true
-    }
+    },
+    "lint": {
+      "dependsOn": ["^lint"],
+      "inputs": [
+        "**/*.ts",
+        "**/*.d.ts",
+        "**/*.tsx",
+        "**/*.js",
+        "**/*.jsx",
+        "**/*.cjs",
+        "**/*.mjs"
+      ]
+    },
+    "lint:fix": { "cache": false }
   }
 }

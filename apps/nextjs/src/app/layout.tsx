@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-
+import type { ReactNode } from "react";
 import { TRPCReactProvider } from "~/trpc/react";
 
 import "~/app/globals.css";
@@ -34,13 +34,11 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout(props: { children: React.ReactNode }) {
+export default function RootLayout(props: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-          <TRPCReactProvider>{props.children}</TRPCReactProvider>
-          <div className="absolute bottom-4 right-4">
-          </div>
+        <TRPCReactProvider>{props.children}</TRPCReactProvider>
       </body>
     </html>
   );

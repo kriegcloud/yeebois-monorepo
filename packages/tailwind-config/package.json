@@ -11,6 +11,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@biomejs/biome": "latest",
     "@dank/typescript-config": "workspace:*",
     "tailwindcss": "^3.4.15"
   }

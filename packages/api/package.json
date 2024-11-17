@@ -11,6 +11,8 @@
   },
   "license": "MIT",
   "scripts": {
+    "lint": "biome check .",
+    "lint:fix": "biome check . --write",
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "dev": "tsc",
@@ -25,6 +27,7 @@
     "zod": "latest"
   },
   "devDependencies": {
+    "@biomejs/biome": "latest",
     "@dank/typescript-config": "workspace:*",
     "typescript": "latest"
   }

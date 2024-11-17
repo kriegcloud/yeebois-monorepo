@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
+    "@biomejs/biome": "latest",
     "@dank/env": "workspace:*",
     "@dank/typescript-config": "workspace:*",
     "next": "^14.2.15"
