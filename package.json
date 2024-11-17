@@ -1,6 +1,6 @@
 {
   "name": "yeebois-monorepo",
-  "version": "2.15.5",
+  "version": "0.0.0",
   "scripts": {
     "with-env": "dotenv -e .env --",
     "build": "bun with-env turbo build",
@@ -22,9 +22,8 @@
     "@biomejs/biome": "latest",
     "@dank/typescript-config": "workspace:*",
     "lefthook": "^1.8.2",
-    "sharif": "^2.3.3",
     "turbo": "latest",
-    "typescript": "latest",
+    "typescript": "^5.6.3",
     "ultracite": "latest"
   },
   "engines": {
@@ -34,5 +33,6 @@
   "workspaces": [
     "packages/*",
     "apps/*"
-  ]
+  ],
+  "private": true
 }

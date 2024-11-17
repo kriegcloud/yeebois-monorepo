@@ -6,6 +6,9 @@
     "@arcjet/next": "1.0.0-alpha.28",
     "@dank/env": "workspace:*"
   },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules"
+  },
   "devDependencies": {
     "@biomejs/biome": "latest",
     "@dank/typescript-config": "workspace:*",

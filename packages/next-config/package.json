@@ -8,6 +8,9 @@
     "@dank/typescript-config": "workspace:*",
     "next": "^14.2.15"
   },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules"
+  },
   "dependencies": {
     "@logtail/next": "^0.1.6",
     "@next/bundle-analyzer": "^15.0.3",

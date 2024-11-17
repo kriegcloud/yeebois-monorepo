@@ -24,11 +24,11 @@
     "@dank/validators": "workspace:*",
     "@trpc/server": "^11.0.0-rc.477",
     "superjson": "2.2.1",
-    "zod": "latest"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@biomejs/biome": "latest",
     "@dank/typescript-config": "workspace:*",
-    "typescript": "latest"
+    "typescript": "^5.6.3"
   }
 }
