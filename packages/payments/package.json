@@ -1,0 +1,13 @@
+{
+  "name": "@dank/payments",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@dank/env": "workspace:*",
+    "stripe": "^17.3.1"
+  },
+  "devDependencies": {
+    "@dank/typescript-config": "workspace:*",
+    "typescript": "^5.6.3"
+  }
+}

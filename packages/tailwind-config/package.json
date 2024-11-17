@@ -1,0 +1,17 @@
+{
+  "name": "@dank/tailwind-config",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "tailwind.config.js"
+  ],
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.15",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@dank/typescript-config": "workspace:*",
+    "tailwindcss": "^3.4.15"
+  }
+}

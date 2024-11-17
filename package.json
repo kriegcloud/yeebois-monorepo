@@ -1,0 +1,38 @@
+{
+  "name": "yeebois-monorepo",
+  "version": "2.15.5",
+  "scripts": {
+    "with-env": "dotenv -e .env --",
+    "build": "bun with-env turbo build",
+    "clean": "git clean -xdf node_modules",
+    "clean:workspaces": "turbo run clean",
+    "db:push": "turbo -F @dank/db push",
+    "db:studio": "turbo -F @dank/db studio",
+    "dev": "turbo watch dev --continue",
+    "dev:next": "turbo watch dev -F @acme/nextjs...",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "analyze": "turbo analyze",
+    "typecheck": "turbo run typecheck",
+    "bump-deps": "npx npm-check-updates --deep -u -x react-day-picker && bun install"
+  },
+  "devDependencies": {
+    "@auto-it/all-contributors": "latest",
+    "@auto-it/first-time-contributor": "latest",
+    "@biomejs/biome": "latest",
+    "@dank/typescript-config": "workspace:*",
+    "lefthook": "^1.8.2",
+    "sharif": "^2.3.3",
+    "turbo": "latest",
+    "typescript": "latest",
+    "ultracite": "latest"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "bun@1.1.10",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ]
+}

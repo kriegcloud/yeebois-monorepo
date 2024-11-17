@@ -1,0 +1,4 @@
+{
+  "extends": "@dank/typescript-config/vite.json",
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
+}
