@@ -1,5 +1,5 @@
 'use client';
-
+import { signIn } from "next-auth/react";
 import { z as zod } from 'zod';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -66,15 +66,14 @@ export function JwtSignInView() {
     formState: { isSubmitting },
   } = methods;
 
+
+
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await signInWithPassword({ email: data.email, password: data.password });
-      await checkUserSession?.();
+      signIn("discord");
 
-      router.refresh();
     } catch (error) {
       console.error(error);
-      setErrorMsg(typeof error === 'string' ? error : error.message);
     }
   });
 

@@ -3,9 +3,8 @@ import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { appRouter, createTRPCContext } from "@dank/api";
 import { auth } from "@dank/auth";
 
-export const runtime = "edge";
 
-/**
+/*
  * Configure basic CORS headers
  * You should extend this to match your needs
  */

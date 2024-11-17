@@ -1,12 +1,26 @@
+version: "3.6"
 services:
-  db:
-    container_name: db
-    image: postgres
+  postgres:
+    image: postgres:13
     ports:
-      - "5432:5432"
-    env_file:
-      # shared env file with strapi application
-      - ./.env
+      - "5450:5432" # expose pg on port 5450 to not collide with pg from elswhere
+    restart: always
     volumes:
-      - ./db-data/:/var/lib/postgresql/data
-    restart: unless-stopped
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_HOST_AUTH_METHOD: trust
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  postgres_is_ready:
+    image: postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  db_data:

@@ -6,10 +6,7 @@ import type {
   Session as NextAuthSession,
 } from "next-auth";
 import Discord from "next-auth/providers/discord";
-
 import { db } from "@dank/db/client";
-import { Account, Session, User } from "@dank/db/schema";
-
 import { env } from "../env";
 
 declare module "next-auth" {
@@ -20,11 +17,7 @@ declare module "next-auth" {
   }
 }
 
-const adapter = DrizzleAdapter(db, {
-  usersTable: User,
-  accountsTable: Account,
-  sessionsTable: Session,
-});
+const adapter = DrizzleAdapter(db);
 
 export const isSecureContext = env.NODE_ENV !== "development";
 
@@ -41,6 +34,7 @@ export const authConfig = {
   providers: [Discord],
   callbacks: {
     session: (opts) => {
+      console.log(opts)
       if (!("user" in opts))
         throw new Error("unreachable with session strategy");
 
@@ -58,8 +52,10 @@ export const authConfig = {
 export const validateToken = async (
   token: string,
 ): Promise<NextAuthSession | null> => {
+  console.log(token)
   const sessionToken = token.slice("Bearer ".length);
   const session = await adapter.getSessionAndUser?.(sessionToken);
+  console.log(session)
   return session
     ? {
         user: {

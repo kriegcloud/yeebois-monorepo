@@ -32,7 +32,26 @@ export type ConfigValue = {
 
 // ----------------------------------------------------------------------
 
-export const CONFIG: ConfigValue = {
+export const CONFIG: {
+  appVersion: string;
+  auth: { method: string; skip: boolean; redirectPath: string };
+  auth0: { clientId: any; domain: any; callbackUrl: any };
+  appName: string;
+  serverUrl: any;
+  mapboxApiKey: any;
+  supabase: { url: any; key: any };
+  assetsDir: any;
+  firebase: {
+    storageBucket: any;
+    apiKey: any;
+    messagingSenderId: any;
+    appId: any;
+    projectId: any;
+    measurementId: any;
+    authDomain: any
+  };
+  amplify: { userPoolWebClientId: any; region: any; userPoolId: any }
+} = {
   appName: 'Minimal UI',
   appVersion: packageJson.version,
   serverUrl: process.env.NEXT_PUBLIC_SERVER_URL ?? '',

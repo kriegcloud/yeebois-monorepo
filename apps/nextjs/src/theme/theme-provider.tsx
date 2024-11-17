@@ -23,6 +23,7 @@ type Props = {
 };
 
 export function ThemeProvider({ children }: Props) {
+
   const settings = useSettingsContext();
 
   const theme = createTheme(settings);
