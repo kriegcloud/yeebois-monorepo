@@ -12,8 +12,6 @@
   },
   "license": "MIT",
   "scripts": {
-    "lint": "biome check .",
-    "lint:fix": "biome check . --write",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit"
   },
@@ -24,13 +22,12 @@
     "@t3-oss/env-nextjs": "^0.11.1",
     "next": "^14.2.15",
     "next-auth": "5.0.0-beta.20",
-    "react": "latest",
-    "react-dom": "latest",
-    "zod": "latest"
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@biomejs/biome": "latest",
     "@dank/typescript-config": "workspace:*",
-    "typescript": "latest"
+    "typescript": "^5.6.3"
   }
 }

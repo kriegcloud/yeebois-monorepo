@@ -1,5 +1,5 @@
 {
-  "extends": "@dank/typescript-config/internal-package.json",
+  "extends": "@dank/typescript-config/base.json",
   "include": ["src", "*.ts"],
   "exclude": ["node_modules"]
 }
