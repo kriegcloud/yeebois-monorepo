@@ -36,6 +36,7 @@ export function useEventListener<K extends keyof DocumentEventMap>(
 export function useEventListener<
   KW extends keyof WindowEventMap,
   KH extends keyof HTMLElementEventMap,
+  // biome-ignore lint/suspicious/noConfusingVoidType: <explanation>
   T extends HTMLElement | void = void,
 >(
   eventName: KW | KH,
@@ -53,7 +54,7 @@ export function useEventListener<
   useEffect(() => {
     // Define the listening target
     const targetElement: T | Window = element?.current || window;
-    if (!(targetElement && targetElement.addEventListener)) {
+    if (!(targetElement?.addEventListener)) {
       return;
     }
 

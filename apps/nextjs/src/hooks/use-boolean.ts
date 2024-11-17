@@ -12,7 +12,7 @@ export type UseBooleanReturn = {
   setValue: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export function useBoolean(defaultValue: boolean = false): UseBooleanReturn {
+export function useBoolean(defaultValue = false): UseBooleanReturn {
   const [value, setValue] = useState(defaultValue);
 
   const onTrue = useCallback(() => {

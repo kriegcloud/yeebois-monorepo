@@ -227,6 +227,7 @@ export function NotificationItem({ notification }: { notification: NotificationI
 function reader(data: string) {
   return (
     <Box
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
       dangerouslySetInnerHTML={{ __html: data }}
       sx={{
         mb: 0.5,

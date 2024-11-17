@@ -1,14 +1,11 @@
-import type { Theme } from '@mui/material/styles';
-import type { SettingsState } from 'src/components/settings';
+import type {Theme} from '@mui/material/styles';
+import {experimental_extendTheme as extendTheme} from '@mui/material/styles';
+import type {SettingsState} from 'src/components/settings';
 
-import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
-
-import { setFont } from './styles/utils';
-import { overridesTheme } from './overrides-theme';
-import { shadows, typography, components, colorSchemes, customShadows } from './core';
-import { updateCoreWithSettings, updateComponentsWithSettings } from './with-settings/update-theme';
-
-import type { ThemeLocaleComponents } from './types';
+import {setFont} from './styles/utils';
+import {overridesTheme} from './overrides-theme';
+import {colorSchemes, components, customShadows, shadows, typography} from './core';
+import {updateComponentsWithSettings, updateCoreWithSettings} from './with-settings/update-theme';
 
 // ----------------------------------------------------------------------
 
@@ -36,16 +33,11 @@ export function createTheme(
    */
   const updateTheme = updateCoreWithSettings(initialTheme, settings);
 
-  /**
-   * 2.Create theme + add locale + update component with settings.
-   */
-  const theme = extendTheme(
+  return extendTheme(
     updateTheme,
     updateComponentsWithSettings(settings),
     overridesTheme
   );
-
-  return theme;
 }
 
 // ----------------------------------------------------------------------
@@ -73,7 +65,7 @@ function shouldSkipGeneratingVar(keys: string[], value: string | number): boolea
   const isPaletteKey = keys[0] === 'palette';
 
   if (isPaletteKey) {
-    const paletteType = keys[1];
+    const paletteType = keys[1] as keyof typeof skipPaletteKeys;
     const skipKeys = skipPaletteKeys[paletteType] || skipPaletteKeys.global;
 
     return keys.some((key) => skipKeys?.includes(key));
@@ -81,26 +73,3 @@ function shouldSkipGeneratingVar(keys: string[], value: string | number): boolea
 
   return keys.some((key) => skipGlobalKeys?.includes(key));
 }
-
-/**
-* createTheme without @settings and @locale components.
-*
- ```jsx
-export function createTheme(): Theme {
-  const initialTheme = {
-    colorSchemes,
-    shadows: shadows('light'),
-    customShadows: customShadows('light'),
-    shape: { borderRadius: 8 },
-    components,
-    typography,
-    cssVarPrefix: '',
-    shouldSkipGeneratingVar,
-  };
-
-  const theme = extendTheme(initialTheme, overridesTheme);
-
-  return theme;
-}
- ```
-*/

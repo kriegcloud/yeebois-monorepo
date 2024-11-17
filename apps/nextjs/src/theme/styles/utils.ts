@@ -24,7 +24,7 @@ export function setFont(fontName: string) {
  * Converts rem to px
  */
 export function remToPx(value: string): number {
-  return Math.round(parseFloat(value) * 16);
+  return Math.round(Number.parseFloat(value) * 16);
 }
 
 /**
@@ -53,9 +53,9 @@ export function hexToRgbChannel(hex: string) {
     throw new Error(`Invalid hex color: ${hex}`);
   }
 
-  const r = parseInt(hex.substring(1, 3), 16);
-  const g = parseInt(hex.substring(3, 5), 16);
-  const b = parseInt(hex.substring(5, 7), 16);
+  const r = Number.parseInt(hex.substring(1, 3), 16);
+  const g = Number.parseInt(hex.substring(3, 5), 16);
+  const b = Number.parseInt(hex.substring(5, 7), 16);
 
   return `${r} ${g} ${b}`;
 }
