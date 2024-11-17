@@ -9,7 +9,7 @@
     "db:push": "turbo -F @dank/db push",
     "db:studio": "turbo -F @dank/db studio",
     "dev": "turbo watch dev --continue",
-    "dev:next": "turbo watch dev -F @acme/nextjs...",
+    "dev:next": "turbo watch dev -F @dank/nextjs...",
     "lint": "turbo lint",
     "test": "turbo test",
     "analyze": "turbo analyze",
