@@ -1,44 +1,63 @@
-import type { Metadata, Viewport } from "next";
-import type { ReactNode } from "react";
-import { TRPCReactProvider } from "~/trpc/react";
+import 'src/global.css';
 
-import "~/app/globals.css";
+// ----------------------------------------------------------------------
 
-import { env } from "~/env";
+import type { Viewport } from 'next';
 
-export const metadata: Metadata = {
-  metadataBase: new URL(
-    env.VERCEL_ENV === "production"
-      ? "https://turbo.t3.gg"
-      : "http://localhost:3000",
-  ),
-  title: "Create T3 Turbo",
-  description: "Simple monorepo with shared backend for web & mobile apps",
-  openGraph: {
-    title: "Create T3 Turbo",
-    description: "Simple monorepo with shared backend for web & mobile apps",
-    url: "https://create-t3-turbo.vercel.app",
-    siteName: "Create T3 Turbo",
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@jullerino",
-    creator: "@jullerino",
-  },
-};
+import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
+
+import { CONFIG } from 'src/config-global';
+import { primary } from 'src/theme/core/palette';
+import { schemeConfig } from 'src/theme/scheme-config';
+import { ThemeProvider } from 'src/theme/theme-provider';
+
+import { ProgressBar } from 'src/components/progress-bar';
+import { MotionLazy } from 'src/components/animate/motion-lazy';
+import { SettingsDrawer, defaultSettings, SettingsProvider } from 'src/components/settings';
+
+import { AuthProvider } from 'src/auth/context/jwt';
+
+// ----------------------------------------------------------------------
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: primary.main,
+};
+
+export const metadata = {
+  icons: [
+    {
+      rel: 'icon',
+      url: `/favicon.ico`,
+    },
   ],
 };
 
-export default function RootLayout(props: { children: ReactNode }) {
+type Props = {
+  children: React.ReactNode;
+};
+
+export default async function RootLayout({ children }: Props) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <TRPCReactProvider>{props.children}</TRPCReactProvider>
+        <InitColorSchemeScript
+          defaultMode={schemeConfig.defaultMode}
+          modeStorageKey={schemeConfig.modeStorageKey}
+        />
+
+        <AuthProvider>
+          <SettingsProvider settings={defaultSettings}>
+            <ThemeProvider>
+              <MotionLazy>
+                <ProgressBar />
+                <SettingsDrawer />
+                {children}
+              </MotionLazy>
+            </ThemeProvider>
+          </SettingsProvider>
+        </AuthProvider>
       </body>
     </html>
   );

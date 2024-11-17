@@ -1,36 +1,19 @@
-import { Suspense } from "react";
+'use client';
 
-import { HydrateClient, api } from "~/trpc/server";
+import { useEffect } from 'react';
 
-export const runtime = "edge";
+import { useRouter } from 'src/routes/hooks';
 
-export default function HomePage() {
-  // You can await this here if you don't want to show Suspense fallback below
-  void api.post.all.prefetch();
+import { CONFIG } from 'src/config-global';
 
-  return (
-    <HydrateClient>
-      <main className="container h-screen py-16">
-        <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            Create <span className="text-primary">T3</span> Turbo
-          </h1>
+// ----------------------------------------------------------------------
 
-          {/*<div className="w-full max-w-2xl overflow-y-scroll">*/}
-          {/*  <Suspense*/}
-          {/*    fallback={*/}
-          {/*      <div className="flex w-full flex-col gap-4">*/}
-          {/*        <PostCardSkeleton />*/}
-          {/*        <PostCardSkeleton />*/}
-          {/*        <PostCardSkeleton />*/}
-          {/*      </div>*/}
-          {/*    }*/}
-          {/*  >*/}
-          {/*    <PostList />*/}
-          {/*  </Suspense>*/}
-          {/*</div>*/}
-        </div>
-      </main>
-    </HydrateClient>
-  );
+export default function Page() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push(CONFIG.auth.redirectPath);
+  }, [router]);
+
+  return null;
 }
