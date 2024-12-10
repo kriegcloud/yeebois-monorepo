@@ -1,7 +1,7 @@
 
 import { migrate } from "drizzle-orm/node-postgres/migrator";
 
-import { db } from "./index";
+import { db } from "./client";
 
 async function main() {
   try {
@@ -13,4 +13,4 @@ async function main() {
     process.exit(1);
   }
 }
-main();
+main().then(r => r);
