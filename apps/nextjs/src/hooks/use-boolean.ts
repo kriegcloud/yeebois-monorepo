@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useMemo, useState, useCallback } from 'react';
+import { useCallback, useMemo, useState } from "react";
 
 // ----------------------------------------------------------------------
 
@@ -35,7 +35,7 @@ export function useBoolean(defaultValue = false): UseBooleanReturn {
       onToggle,
       setValue,
     }),
-    [value, onTrue, onFalse, onToggle, setValue]
+    [value, onTrue, onFalse, onToggle, setValue],
   );
 
   return memoizedValue;

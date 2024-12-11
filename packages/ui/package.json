@@ -10,9 +10,7 @@
     },
     "./styles.css": "./dist/index.css"
   },
-  "sideEffects": [
-    "**/*.css"
-  ],
+  "sideEffects": ["**/*.css"],
   "types": "./dist/index.d.mts",
   "scripts": {
     "lint": "biome check .",

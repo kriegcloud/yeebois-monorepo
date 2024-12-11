@@ -1,12 +1,12 @@
-import type { Theme, Components } from '@mui/material/styles';
+import type { Components, Theme } from "@mui/material/styles";
 
-import { listClasses } from '@mui/material/List';
+import { listClasses } from "@mui/material/List";
 
-import { paper } from '../../styles';
+import { paper } from "../../styles";
 
 // ----------------------------------------------------------------------
 
-const MuiPopover: Components<Theme>['MuiPopover'] = {
+const MuiPopover: Components<Theme>["MuiPopover"] = {
   /** **************************************
    * STYLE
    *************************************** */

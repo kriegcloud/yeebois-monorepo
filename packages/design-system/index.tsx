@@ -1,11 +1,7 @@
-import { AnalyticsProvider } from '@dank/analytics';
-import { AuthProvider } from '@dank/auth/provider';
-import { env } from '@dank/env';
-import { VercelToolbar } from '@vercel/toolbar/next';
-import type { ThemeProviderProps } from 'next-themes';
-import { ThemeProvider } from 'next-themes';
-import { Toaster } from './components/ui/sonner';
-import { TooltipProvider } from './components/ui/tooltip';
+import type { ThemeProviderProps } from "next-themes";
+import { ThemeProvider } from "next-themes";
+import { Toaster } from "./components/ui/sonner";
+import { TooltipProvider } from "./components/ui/tooltip";
 
 type DesignSystemProviderProperties = ThemeProviderProps;
 
@@ -20,12 +16,12 @@ export const DesignSystemProvider = ({
     disableTransitionOnChange
     {...properties}
   >
-    <AuthProvider>
-      <AnalyticsProvider>
-        <TooltipProvider>{children}</TooltipProvider>
-        <Toaster />
-        {env.NODE_ENV === 'development' && <VercelToolbar />}
-      </AnalyticsProvider>
-    </AuthProvider>
+    {/*<AuthProvider>*/}
+    {/*<AnalyticsProvider>*/}
+    <TooltipProvider>{children}</TooltipProvider>
+    <Toaster />
+    {/*{env.NODE_ENV === 'development' && <VercelToolbar />}*/}
+    {/*</AnalyticsProvider>*/}
+    {/*</AuthProvider>*/}
   </ThemeProvider>
 );

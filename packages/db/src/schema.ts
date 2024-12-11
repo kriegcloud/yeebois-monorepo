@@ -1,13 +1,8 @@
-import { init } from "@paralleldrive/cuid2";
-import {
-  timestamp,
-  text,
-  primaryKey,
-  integer,
-} from "drizzle-orm/pg-core";
-import { relations, sql } from "drizzle-orm";
-import { serial, varchar } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "@auth/core/adapters";
+import { init } from "@paralleldrive/cuid2";
+import { relations, sql } from "drizzle-orm";
+import { integer, primaryKey, text, timestamp } from "drizzle-orm/pg-core";
+import { serial, varchar } from "drizzle-orm/pg-core";
 import { pgTable } from "./_table";
 const createId = init({
   length: 10,
@@ -65,7 +60,7 @@ export const verificationTokens = pgTable(
   },
   (vt) => ({
     compoundKey: primaryKey({
-      columns: [vt.identifier, vt.token]
+      columns: [vt.identifier, vt.token],
     }),
   }),
 );
@@ -84,4 +79,4 @@ export default {
   sessions,
   verificationTokens,
   post,
-}
+};

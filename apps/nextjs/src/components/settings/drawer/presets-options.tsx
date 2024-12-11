@@ -1,17 +1,17 @@
-import Box from '@mui/material/Box';
-import ButtonBase from '@mui/material/ButtonBase';
-import { alpha as hexAlpha } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import ButtonBase from "@mui/material/ButtonBase";
+import { alpha as hexAlpha } from "@mui/material/styles";
 
-import { CONFIG } from 'src/config-global';
+import { CONFIG } from "src/config-global";
 
-import { Block } from './styles';
-import { SvgColor } from '../../svg-color';
+import { SvgColor } from "../../svg-color";
+import { Block } from "./styles";
 
-import type { SettingsState } from '../types';
+import type { SettingsState } from "../types";
 
 // ----------------------------------------------------------------------
 
-type Value = SettingsState['primaryColor'];
+type Value = SettingsState["primaryColor"];
 
 type Props = {
   value: Value;
@@ -22,12 +22,17 @@ type Props = {
 export function PresetsOptions({ value, options, onClickOption }: Props) {
   return (
     <Block title="Presets">
-      <Box component="ul" gap={1.5} display="grid" gridTemplateColumns="repeat(3, 1fr)">
+      <Box
+        component="ul"
+        gap={1.5}
+        display="grid"
+        gridTemplateColumns="repeat(3, 1fr)"
+      >
         {options.map((option) => {
           const selected = value === option.name;
 
           return (
-            <Box component="li" key={option.name} sx={{ display: 'flex' }}>
+            <Box component="li" key={option.name} sx={{ display: "flex" }}>
               <ButtonBase
                 onClick={() => onClickOption(option.name)}
                 sx={{
@@ -43,7 +48,7 @@ export function PresetsOptions({ value, options, onClickOption }: Props) {
                 <SvgColor
                   width={28}
                   src={`/assets/icons/settings/ic-siderbar-duotone.svg`}
-                  sx={{ color: 'currentColor' }}
+                  sx={{ color: "currentColor" }}
                 />
               </ButtonBase>
             </Box>

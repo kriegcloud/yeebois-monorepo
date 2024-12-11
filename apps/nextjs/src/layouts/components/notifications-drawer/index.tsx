@@ -1,39 +1,39 @@
-'use client';
+"use client";
 
-import type { IconButtonProps } from '@mui/material/IconButton';
+import type { IconButtonProps } from "@mui/material/IconButton";
 
-import { m } from 'framer-motion';
-import { useState, useCallback } from 'react';
+import { m } from "framer-motion";
+import { useCallback, useState } from "react";
 
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Badge from '@mui/material/Badge';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import SvgIcon from '@mui/material/SvgIcon';
-import Tooltip from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
+import Badge from "@mui/material/Badge";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import Stack from "@mui/material/Stack";
+import SvgIcon from "@mui/material/SvgIcon";
+import Tab from "@mui/material/Tab";
+import Tooltip from "@mui/material/Tooltip";
+import Typography from "@mui/material/Typography";
 
-import { useBoolean } from 'src/hooks/use-boolean';
+import { useBoolean } from "src/hooks/use-boolean";
 
-import { Label } from 'src/components/label';
-import { Iconify } from 'src/components/iconify';
-import { varHover } from 'src/components/animate';
-import { Scrollbar } from 'src/components/scrollbar';
-import { CustomTabs } from 'src/components/custom-tabs';
+import { varHover } from "src/components/animate";
+import { CustomTabs } from "src/components/custom-tabs";
+import { Iconify } from "src/components/iconify";
+import { Label } from "src/components/label";
+import { Scrollbar } from "src/components/scrollbar";
 
-import { NotificationItem } from './notification-item';
+import { NotificationItem } from "./notification-item";
 
-import type { NotificationItemProps } from './notification-item';
+import type { NotificationItemProps } from "./notification-item";
 
 // ----------------------------------------------------------------------
 
 const TABS = [
-  { value: 'all', label: 'All', count: 22 },
-  { value: 'unread', label: 'Unread', count: 12 },
-  { value: 'archived', label: 'Archived', count: 10 },
+  { value: "all", label: "All", count: 22 },
+  { value: "unread", label: "Unread", count: 12 },
+  { value: "archived", label: "Archived", count: 10 },
 ];
 
 // ----------------------------------------------------------------------
@@ -42,25 +42,43 @@ export type NotificationsDrawerProps = IconButtonProps & {
   data?: NotificationItemProps[];
 };
 
-export function NotificationsDrawer({ data = [], sx, ...other }: NotificationsDrawerProps) {
+export function NotificationsDrawer({
+  data = [],
+  sx,
+  ...other
+}: NotificationsDrawerProps) {
   const drawer = useBoolean();
 
-  const [currentTab, setCurrentTab] = useState('all');
+  const [currentTab, setCurrentTab] = useState("all");
 
-  const handleChangeTab = useCallback((event: React.SyntheticEvent, newValue: string) => {
-    setCurrentTab(newValue);
-  }, []);
+  const handleChangeTab = useCallback(
+    (event: React.SyntheticEvent, newValue: string) => {
+      setCurrentTab(newValue);
+    },
+    [],
+  );
 
   const [notifications, setNotifications] = useState(data);
 
-  const totalUnRead = notifications.filter((item) => item.isUnRead === true).length;
+  const totalUnRead = notifications.filter(
+    (item) => item.isUnRead === true,
+  ).length;
 
   const handleMarkAllAsRead = () => {
-    setNotifications(notifications.map((notification) => ({ ...notification, isUnRead: false })));
+    setNotifications(
+      notifications.map((notification) => ({
+        ...notification,
+        isUnRead: false,
+      })),
+    );
   };
 
   const renderHead = (
-    <Stack direction="row" alignItems="center" sx={{ py: 2, pl: 2.5, pr: 1, minHeight: 68 }}>
+    <Stack
+      direction="row"
+      alignItems="center"
+      sx={{ py: 2, pl: 2.5, pr: 1, minHeight: 68 }}
+    >
       <Typography variant="h6" sx={{ flexGrow: 1 }}>
         Notifications
       </Typography>
@@ -73,7 +91,10 @@ export function NotificationsDrawer({ data = [], sx, ...other }: NotificationsDr
         </Tooltip>
       )}
 
-      <IconButton onClick={drawer.onFalse} sx={{ display: { xs: 'inline-flex', sm: 'none' } }}>
+      <IconButton
+        onClick={drawer.onFalse}
+        sx={{ display: { xs: "inline-flex", sm: "none" } }}
+      >
         <Iconify icon="mingcute:close-line" />
       </IconButton>
 
@@ -84,7 +105,11 @@ export function NotificationsDrawer({ data = [], sx, ...other }: NotificationsDr
   );
 
   const renderTabs = (
-    <CustomTabs variant="fullWidth" value={currentTab} onChange={handleChangeTab}>
+    <CustomTabs
+      variant="fullWidth"
+      value={currentTab}
+      onChange={handleChangeTab}
+    >
       {TABS.map((tab) => (
         <Tab
           key={tab.value}
@@ -93,11 +118,15 @@ export function NotificationsDrawer({ data = [], sx, ...other }: NotificationsDr
           label={tab.label}
           icon={
             <Label
-              variant={((tab.value === 'all' || tab.value === currentTab) && 'filled') || 'soft'}
+              variant={
+                ((tab.value === "all" || tab.value === currentTab) &&
+                  "filled") ||
+                "soft"
+              }
               color={
-                (tab.value === 'unread' && 'info') ||
-                (tab.value === 'archived' && 'success') ||
-                'default'
+                (tab.value === "unread" && "info") ||
+                (tab.value === "archived" && "success") ||
+                "default"
               }
             >
               {tab.count}
@@ -112,7 +141,7 @@ export function NotificationsDrawer({ data = [], sx, ...other }: NotificationsDr
     <Scrollbar>
       <Box component="ul">
         {notifications?.map((notification) => (
-          <Box component="li" key={notification.id} sx={{ display: 'flex' }}>
+          <Box component="li" key={notification.id} sx={{ display: "flex" }}>
             <NotificationItem notification={notification} />
           </Box>
         ))}

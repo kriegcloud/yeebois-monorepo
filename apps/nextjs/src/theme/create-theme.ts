@@ -1,18 +1,24 @@
-import type {Theme} from '@mui/material/styles';
-import {experimental_extendTheme as extendTheme} from '@mui/material/styles';
-import type {SettingsState} from 'src/components/settings';
+import type { Theme } from "@mui/material/styles";
+import { experimental_extendTheme as extendTheme } from "@mui/material/styles";
+import type { SettingsState } from "src/components/settings";
 
-import {setFont} from './styles/utils';
-import {overridesTheme} from './overrides-theme';
-import {colorSchemes, components, customShadows, shadows, typography} from './core';
-import {updateComponentsWithSettings, updateCoreWithSettings} from './with-settings/update-theme';
+import {
+  colorSchemes,
+  components,
+  customShadows,
+  shadows,
+  typography,
+} from "./core";
+import { overridesTheme } from "./overrides-theme";
+import { setFont } from "./styles/utils";
+import {
+  updateComponentsWithSettings,
+  updateCoreWithSettings,
+} from "./with-settings/update-theme";
 
 // ----------------------------------------------------------------------
 
-export function createTheme(
-
-  settings: SettingsState
-): Theme {
+export function createTheme(settings: SettingsState): Theme {
   const initialTheme = {
     colorSchemes,
     shadows: shadows(settings.colorScheme),
@@ -24,7 +30,7 @@ export function createTheme(
       ...typography,
       fontFamily: setFont(settings.fontFamily),
     },
-    cssVarPrefix: '',
+    cssVarPrefix: "",
     shouldSkipGeneratingVar,
   };
 
@@ -36,33 +42,36 @@ export function createTheme(
   return extendTheme(
     updateTheme,
     updateComponentsWithSettings(settings),
-    overridesTheme
+    overridesTheme,
   );
 }
 
 // ----------------------------------------------------------------------
 
-function shouldSkipGeneratingVar(keys: string[], value: string | number): boolean {
+function shouldSkipGeneratingVar(
+  keys: string[],
+  value: string | number,
+): boolean {
   const skipGlobalKeys = [
-    'mixins',
-    'overlays',
-    'direction',
-    'breakpoints',
-    'cssVarPrefix',
-    'unstable_sxConfig',
-    'typography',
+    "mixins",
+    "overlays",
+    "direction",
+    "breakpoints",
+    "cssVarPrefix",
+    "unstable_sxConfig",
+    "typography",
     // 'transitions',
   ];
 
   const skipPaletteKeys: {
     [key: string]: string[];
   } = {
-    global: ['tonalOffset', 'dividerChannel', 'contrastThreshold'],
-    grey: ['A100', 'A200', 'A400', 'A700'],
-    text: ['icon'],
+    global: ["tonalOffset", "dividerChannel", "contrastThreshold"],
+    grey: ["A100", "A200", "A400", "A700"],
+    text: ["icon"],
   };
 
-  const isPaletteKey = keys[0] === 'palette';
+  const isPaletteKey = keys[0] === "palette";
 
   if (isPaletteKey) {
     const paletteType = keys[1] as keyof typeof skipPaletteKeys;

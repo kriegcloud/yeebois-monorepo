@@ -1,14 +1,14 @@
-import type { Theme, SxProps } from '@mui/material/styles';
-import type { ButtonBaseProps } from '@mui/material/ButtonBase';
+import type { ButtonBaseProps } from "@mui/material/ButtonBase";
+import type { SxProps, Theme } from "@mui/material/styles";
 
-import Box from '@mui/material/Box';
-import Tooltip from '@mui/material/Tooltip';
-import ButtonBase from '@mui/material/ButtonBase';
+import Box from "@mui/material/Box";
+import ButtonBase from "@mui/material/ButtonBase";
+import Tooltip from "@mui/material/Tooltip";
 
-import { varAlpha, stylesMode } from 'src/theme/styles';
+import { stylesMode, varAlpha } from "src/theme/styles";
 
-import { Iconify } from '../../iconify';
-import { svgColorClasses } from '../../svg-color';
+import { Iconify } from "../../iconify";
+import { svgColorClasses } from "../../svg-color";
 
 // ----------------------------------------------------------------------
 
@@ -27,10 +27,11 @@ export function Block({ title, tooltip, children, sx }: Props) {
         pb: 2,
         pt: 4,
         borderRadius: 2,
-        display: 'flex',
-        position: 'relative',
-        flexDirection: 'column',
-        border: (theme) => `solid 1px ${varAlpha(theme.vars.palette.grey['500Channel'], 0.12)}`,
+        display: "flex",
+        position: "relative",
+        flexDirection: "column",
+        border: (theme) =>
+          `solid 1px ${varAlpha(theme.vars.palette.grey["500Channel"], 0.12)}`,
         ...sx,
       }}
     >
@@ -41,14 +42,14 @@ export function Block({ title, tooltip, children, sx }: Props) {
           top: -12,
           fontSize: 13,
           borderRadius: 22,
-          lineHeight: '22px',
-          position: 'absolute',
-          alignItems: 'center',
-          color: 'common.white',
-          display: 'inline-flex',
-          bgcolor: 'text.primary',
-          fontWeight: 'fontWeightSemiBold',
-          [stylesMode.dark]: { color: 'grey.800' },
+          lineHeight: "22px",
+          position: "absolute",
+          alignItems: "center",
+          color: "common.white",
+          display: "inline-flex",
+          bgcolor: "text.primary",
+          fontWeight: "fontWeightSemiBold",
+          [stylesMode.dark]: { color: "grey.800" },
         }}
       >
         {title}
@@ -58,7 +59,7 @@ export function Block({ title, tooltip, children, sx }: Props) {
             <Iconify
               width={14}
               icon="eva:info-outline"
-              sx={{ ml: 0.5, mr: -0.5, opacity: 0.48, cursor: 'pointer' }}
+              sx={{ ml: 0.5, mr: -0.5, opacity: 0.48, cursor: "pointer" }}
             />
           </Tooltip>
         )}
@@ -77,33 +78,40 @@ type BlockOptionProps = ButtonBaseProps & {
   label?: React.ReactNode;
 };
 
-export function BlockOption({ icon, label, selected, sx, ...other }: BlockOptionProps) {
+export function BlockOption({
+  icon,
+  label,
+  selected,
+  sx,
+  ...other
+}: BlockOptionProps) {
   return (
     <ButtonBase
       disableRipple
       sx={{
-        '--border-color': (theme) => varAlpha(theme.vars.palette.grey['500Channel'], 0.08),
-        '--active-color': (theme) =>
+        "--border-color": (theme) =>
+          varAlpha(theme.vars.palette.grey["500Channel"], 0.08),
+        "--active-color": (theme) =>
           `linear-gradient(135deg, ${theme.vars.palette.primary.light}, ${theme.vars.palette.primary.main})`,
         width: 1,
         borderRadius: 1.5,
-        lineHeight: '18px',
-        color: 'text.disabled',
+        lineHeight: "18px",
+        color: "text.disabled",
         border: `solid 1px transparent`,
-        fontWeight: 'fontWeightSemiBold',
+        fontWeight: "fontWeightSemiBold",
         fontSize: (theme) => theme.typography.pxToRem(13),
         ...(selected && {
-          color: 'text.primary',
-          bgcolor: 'background.paper',
-          borderColor: 'var(--border-color)',
+          color: "text.primary",
+          bgcolor: "background.paper",
+          borderColor: "var(--border-color)",
           boxShadow: (theme) =>
-            `-8px 8px 20px -4px ${varAlpha(theme.vars.palette.grey['500Channel'], 0.12)}`,
+            `-8px 8px 20px -4px ${varAlpha(theme.vars.palette.grey["500Channel"], 0.12)}`,
           [stylesMode.dark]: {
             boxShadow: (theme) =>
               `-8px 8px 20px -4px ${varAlpha(theme.vars.palette.common.blackChannel, 0.12)}`,
           },
           [`& .${svgColorClasses.root}`]: {
-            background: 'var(--active-color)',
+            background: "var(--active-color)",
           },
         }),
         ...sx,

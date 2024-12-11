@@ -1,7 +1,7 @@
-import type { BoxProps } from '@mui/material/Box';
+import type { BoxProps } from "@mui/material/Box";
 
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
 
 // ----------------------------------------------------------------------
 
@@ -22,8 +22,8 @@ export function FormResendCode({
     <Box
       sx={{
         mt: 3,
-        typography: 'body2',
-        alignSelf: 'center',
+        typography: "body2",
+        alignSelf: "center",
         ...sx,
       }}
       {...other}
@@ -33,10 +33,10 @@ export function FormResendCode({
         variant="subtitle2"
         onClick={onResendCode}
         sx={{
-          cursor: 'pointer',
+          cursor: "pointer",
           ...(disabled && {
-            color: 'text.disabled',
-            pointerEvents: 'none',
+            color: "text.disabled",
+            pointerEvents: "none",
           }),
         }}
       >

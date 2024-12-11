@@ -5,7 +5,7 @@
 
 // ----------------------------------------------------------------------
 
-export function flattenArray<T>(list: T[], key = 'children'): T[] {
+export function flattenArray<T>(list: T[], key = "children"): T[] {
   let children: T[] = [];
 
   const flatten = list?.map((item: any) => {
@@ -15,7 +15,9 @@ export function flattenArray<T>(list: T[], key = 'children'): T[] {
     return item;
   });
 
-  return flatten?.concat(children.length ? flattenArray(children, key) : children);
+  return flatten?.concat(
+    children.length ? flattenArray(children, key) : children,
+  );
 }
 
 // ----------------------------------------------------------------------
@@ -24,18 +26,22 @@ export function flattenDeep(array: any): any[] {
   const isArray = array && Array.isArray(array);
 
   if (isArray) {
-    return array.flat(Infinity);
+    return array.flat(Number.POSITIVE_INFINITY);
   }
   return [];
 }
 
 // ----------------------------------------------------------------------
 
-export function orderBy<T>(array: T[], properties: (keyof T)[], orders?: ('asc' | 'desc')[]): T[] {
+export function orderBy<T>(
+  array: T[],
+  properties: (keyof T)[],
+  orders?: ("asc" | "desc")[],
+): T[] {
   return array.slice().sort((a, b) => {
     for (let i = 0; i < properties.length; i += 1) {
       const property = properties[i];
-      const order = orders && orders[i] === 'desc' ? -1 : 1;
+      const order = orders && orders[i] === "desc" ? -1 : 1;
 
       const aValue = a[property];
       const bValue = b[property];
@@ -51,7 +57,7 @@ export function orderBy<T>(array: T[], properties: (keyof T)[], orders?: ('asc' 
 
 export function keyBy<T>(
   array: T[],
-  key: keyof T
+  key: keyof T,
 ): {
   [key: string]: T;
 } {
@@ -79,7 +85,11 @@ export function isEqual(a: any, b: any): boolean {
     return false;
   }
 
-  if (typeof a === 'string' || typeof a === 'number' || typeof a === 'boolean') {
+  if (
+    typeof a === "string" ||
+    typeof a === "number" ||
+    typeof a === "boolean"
+  ) {
     return a === b;
   }
 
@@ -91,7 +101,7 @@ export function isEqual(a: any, b: any): boolean {
     return a.every((item, index) => isEqual(item, b[index]));
   }
 
-  if (typeof a === 'object' && typeof b === 'object') {
+  if (typeof a === "object" && typeof b === "object") {
     const keysA = Object.keys(a!);
     const keysB = Object.keys(b!);
 
@@ -108,7 +118,7 @@ export function isEqual(a: any, b: any): boolean {
 // ----------------------------------------------------------------------
 
 function isObject(item: any) {
-  return item && typeof item === 'object' && !Array.isArray(item);
+  return item && typeof item === "object" && !Array.isArray(item);
 }
 
 export const merge = (target: any, ...sources: any[]): any => {

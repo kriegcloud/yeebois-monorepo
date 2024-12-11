@@ -1,9 +1,9 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-
+import type { ChangeEvent } from "react";
 interface InputBoxProps {
   placeholder: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const InputBox = ({ placeholder, onChange }: InputBoxProps) => {

@@ -2,7 +2,7 @@
 
 import type { BoxProps } from '@mui/material/Box';
 
-import { useId, forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';

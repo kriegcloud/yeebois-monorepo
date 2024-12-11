@@ -1,22 +1,22 @@
-import type { StackProps } from '@mui/material/Stack';
+import type { StackProps } from "@mui/material/Stack";
 
-import { m } from 'framer-motion';
+import { m } from "framer-motion";
 
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
-import { alpha as hexAlpha } from '@mui/material/styles';
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import { alpha as hexAlpha } from "@mui/material/styles";
 
-import { paths } from 'src/routes/paths';
+import { paths } from "src/routes/paths";
 
-import { CONFIG } from 'src/config-global';
-import { varAlpha, bgGradient } from 'src/theme/styles';
+import { CONFIG } from "src/config-global";
+import { bgGradient, varAlpha } from "src/theme/styles";
 
-import { Label } from 'src/components/label';
+import { Label } from "src/components/label";
 
-import { useMockedUser } from 'src/auth/hooks';
+import { useMockedUser } from "src/auth/hooks";
 
 // ----------------------------------------------------------------------
 
@@ -24,10 +24,14 @@ export function NavUpgrade({ sx, ...other }: StackProps) {
   const { user } = useMockedUser();
 
   return (
-    <Stack sx={{ px: 2, py: 5, textAlign: 'center', ...sx }} {...other}>
+    <Stack sx={{ px: 2, py: 5, textAlign: "center", ...sx }} {...other}>
       <Stack alignItems="center">
-        <Box sx={{ position: 'relative' }}>
-          <Avatar src={user?.photoURL} alt={user?.displayName} sx={{ width: 48, height: 48 }}>
+        <Box sx={{ position: "relative" }}>
+          <Avatar
+            src={user?.photoURL}
+            alt={user?.displayName}
+            sx={{ width: 48, height: 48 }}
+          >
             {user?.displayName?.charAt(0).toUpperCase()}
           </Avatar>
 
@@ -39,7 +43,7 @@ export function NavUpgrade({ sx, ...other }: StackProps) {
               px: 0.5,
               left: 40,
               height: 20,
-              position: 'absolute',
+              position: "absolute",
               borderBottomLeftRadius: 2,
             }}
           >
@@ -51,7 +55,7 @@ export function NavUpgrade({ sx, ...other }: StackProps) {
           <Typography
             variant="subtitle2"
             noWrap
-            sx={{ color: 'var(--layout-nav-text-primary-color)' }}
+            sx={{ color: "var(--layout-nav-text-primary-color)" }}
           >
             {user?.displayName}
           </Typography>
@@ -59,13 +63,18 @@ export function NavUpgrade({ sx, ...other }: StackProps) {
           <Typography
             variant="body2"
             noWrap
-            sx={{ color: 'var(--layout-nav-text-disabled-color)' }}
+            sx={{ color: "var(--layout-nav-text-disabled-color)" }}
           >
             {user?.email}
           </Typography>
         </Stack>
 
-        <Button variant="contained" href={paths.minimalStore} target="_blank" rel="noopener">
+        <Button
+          variant="contained"
+          href={paths.minimalStore}
+          target="_blank"
+          rel="noopener"
+        >
           Upgrade to Pro
         </Button>
       </Stack>
@@ -80,13 +89,13 @@ export function UpgradeBlock({ sx, ...other }: StackProps) {
     <Stack
       sx={{
         ...bgGradient({
-          color: `135deg, ${hexAlpha('#F7BB95', 0.92)}, ${hexAlpha('#5B2FF3', 0.92)}`,
+          color: `135deg, ${hexAlpha("#F7BB95", 0.92)}, ${hexAlpha("#5B2FF3", 0.92)}`,
           imgUrl: `/assets/background/background-7.webp`,
         }),
         px: 3,
         py: 4,
         borderRadius: 2,
-        position: 'relative',
+        position: "relative",
         ...sx,
       }}
       {...other}
@@ -98,8 +107,9 @@ export function UpgradeBlock({ sx, ...other }: StackProps) {
           width: 1,
           height: 1,
           borderRadius: 2,
-          position: 'absolute',
-          border: (theme) => `solid 3px ${varAlpha(theme.vars.palette.common.whiteChannel, 0.16)}`,
+          position: "absolute",
+          border: (theme) =>
+            `solid 3px ${varAlpha(theme.vars.palette.common.whiteChannel, 0.16)}`,
         }}
       />
 
@@ -108,23 +118,28 @@ export function UpgradeBlock({ sx, ...other }: StackProps) {
         animate={{ y: [12, -12, 12] }}
         transition={{
           duration: 8,
-          ease: 'linear',
-          repeat: Infinity,
+          ease: "linear",
+          repeat: Number.POSITIVE_INFINITY,
           repeatDelay: 0,
         }}
         alt="Small Rocket"
         src={`/assets/illustrations/illustration-rocket-small.webp`}
-        sx={{ right: 0, width: 112, height: 112, position: 'absolute' }}
+        sx={{ right: 0, width: 112, height: 112, position: "absolute" }}
       />
 
-      <Stack alignItems="flex-start" sx={{ position: 'relative' }}>
-        <Box component="span" sx={{ typography: 'h5', color: 'common.white' }}>
+      <Stack alignItems="flex-start" sx={{ position: "relative" }}>
+        <Box component="span" sx={{ typography: "h5", color: "common.white" }}>
           35% OFF
         </Box>
 
         <Box
           component="span"
-          sx={{ mb: 2, mt: 0.5, color: 'common.white', typography: 'subtitle2' }}
+          sx={{
+            mb: 2,
+            mt: 0.5,
+            color: "common.white",
+            typography: "subtitle2",
+          }}
         >
           Power up Productivity!
         </Box>

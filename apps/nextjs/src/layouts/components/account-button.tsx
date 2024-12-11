@@ -1,14 +1,14 @@
-import type { IconButtonProps } from '@mui/material/IconButton';
+import type { IconButtonProps } from "@mui/material/IconButton";
 
-import { m } from 'framer-motion';
+import { m } from "framer-motion";
 
-import NoSsr from '@mui/material/NoSsr';
-import Avatar from '@mui/material/Avatar';
-import SvgIcon from '@mui/material/SvgIcon';
-import { useTheme } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import NoSsr from "@mui/material/NoSsr";
+import SvgIcon from "@mui/material/SvgIcon";
+import { useTheme } from "@mui/material/styles";
 
-import { varHover, AnimateAvatar } from 'src/components/animate';
+import { AnimateAvatar, varHover } from "src/components/animate";
 
 // ----------------------------------------------------------------------
 
@@ -17,7 +17,12 @@ export type AccountButtonProps = IconButtonProps & {
   displayName: string;
 };
 
-export function AccountButton({ photoURL, displayName, sx, ...other }: AccountButtonProps) {
+export function AccountButton({
+  photoURL,
+  displayName,
+  sx,
+  ...other
+}: AccountButtonProps) {
   const theme = useTheme();
 
   const renderFallback = (

@@ -1,5 +1,10 @@
-import { usePathname } from './use-pathname';
-import { hasParams, removeParams, isExternalLink, removeLastSlash } from '../utils';
+import {
+  hasParams,
+  isExternalLink,
+  removeLastSlash,
+  removeParams,
+} from "../utils";
+import { usePathname } from "./use-pathname";
 
 // ----------------------------------------------------------------------
 
@@ -9,7 +14,7 @@ export function useActiveLink(itemPath: string, deep = true): boolean {
   const pathHasParams = hasParams(itemPath);
 
   /* Start check */
-  const notValid = itemPath.startsWith('#') || isExternalLink(itemPath);
+  const notValid = itemPath.startsWith("#") || isExternalLink(itemPath);
 
   if (notValid) {
     return false;

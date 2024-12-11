@@ -3,7 +3,6 @@ import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { appRouter, createTRPCContext } from "@dank/api";
 import { auth } from "@dank/auth";
 
-
 /*
  * Configure basic CORS headers
  * You should extend this to match your needs

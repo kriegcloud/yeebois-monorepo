@@ -1,15 +1,15 @@
 // ----------------------------------------------------------------------
 
 const ROOTS = {
-  AUTH: '/auth',
-  DASHBOARD: '/dashboard',
+  AUTH: "/auth",
+  DASHBOARD: "/dashboard",
 };
 
 // ----------------------------------------------------------------------
 
 export const paths = {
-  faqs: '/faqs',
-  minimalStore: 'https://mui.com/store/items/minimal-dashboard/',
+  faqs: "/faqs",
+  minimalStore: "https://mui.com/store/items/minimal-dashboard/",
   // AUTH
   auth: {
     amplify: {

@@ -1,43 +1,49 @@
-import type { ButtonBaseProps } from '@mui/material/ButtonBase';
+import type { ButtonBaseProps } from "@mui/material/ButtonBase";
 
-import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { useTheme } from "@mui/material/styles";
 
-import { CONFIG } from 'src/config-global';
-import { varAlpha } from 'src/theme/styles';
+import { CONFIG } from "src/config-global";
+import { varAlpha } from "src/theme/styles";
 
-import { SvgColor } from '../../svg-color';
-import { Block, BlockOption } from './styles';
+import { SvgColor } from "../../svg-color";
+import { Block, BlockOption } from "./styles";
 
-import type { SettingsState } from '../types';
+import type { SettingsState } from "../types";
 
 // ----------------------------------------------------------------------
 
 type Props = {
   value: {
-    color: SettingsState['navColor'];
-    layout: SettingsState['navLayout'];
+    color: SettingsState["navColor"];
+    layout: SettingsState["navLayout"];
   };
   options: {
-    colors: SettingsState['navColor'][];
-    layouts: SettingsState['navLayout'][];
+    colors: SettingsState["navColor"][];
+    layouts: SettingsState["navLayout"][];
   };
   onClickOption: {
-    color: (newValue: SettingsState['navColor']) => void;
-    layout: (newValue: SettingsState['navLayout']) => void;
+    color: (newValue: SettingsState["navColor"]) => void;
+    layout: (newValue: SettingsState["navLayout"]) => void;
   };
   hideNavColor?: boolean;
   hideNavLayout?: boolean;
 };
 
-export function NavOptions({ options, value, onClickOption, hideNavColor, hideNavLayout }: Props) {
+export function NavOptions({
+  options,
+  value,
+  onClickOption,
+  hideNavColor,
+  hideNavLayout,
+}: Props) {
   const theme = useTheme();
 
   const labelStyles: React.CSSProperties = {
-    display: 'block',
-    lineHeight: '14px',
-    color: 'text.secondary',
-    fontWeight: 'fontWeightSemiBold',
+    display: "block",
+    lineHeight: "14px",
+    color: "text.secondary",
+    fontWeight: "fontWeightSemiBold",
     fontSize: theme.typography.pxToRem(11),
   };
 
@@ -97,7 +103,7 @@ export function LayoutOption({ option, selected, sx, ...other }: OptionProps) {
     const baseStyles = {
       flexShrink: 0,
       borderRadius: 1,
-      bgcolor: 'currentColor',
+      bgcolor: "currentColor",
     };
 
     const circle = (
@@ -107,7 +113,7 @@ export function LayoutOption({ option, selected, sx, ...other }: OptionProps) {
           width: 10,
           height: 10,
           opacity: 0.8,
-          ...(selected && { opacity: 1, background: 'var(--active-color)' }),
+          ...(selected && { opacity: 1, background: "var(--active-color)" }),
         }}
       />
     );
@@ -119,8 +125,8 @@ export function LayoutOption({ option, selected, sx, ...other }: OptionProps) {
           width: 1,
           height: 4,
           opacity: 0.48,
-          ...(option === 'horizontal' && { width: 16 }),
-          ...(selected && { background: 'var(--active-color)' }),
+          ...(option === "horizontal" && { width: 16 }),
+          ...(selected && { background: "var(--active-color)" }),
         }}
       />
     );
@@ -133,8 +139,8 @@ export function LayoutOption({ option, selected, sx, ...other }: OptionProps) {
           height: 4,
           maxWidth: 14,
           opacity: 0.24,
-          ...(option === 'horizontal' && { maxWidth: 10 }),
-          ...(selected && { background: 'var(--active-color)' }),
+          ...(option === "horizontal" && { maxWidth: 10 }),
+          ...(selected && { background: "var(--active-color)" }),
         }}
       />
     );
@@ -144,21 +150,21 @@ export function LayoutOption({ option, selected, sx, ...other }: OptionProps) {
         gap={0.5}
         flexShrink={0}
         display="flex"
-        flexDirection={option === 'horizontal' ? 'row' : 'column'}
+        flexDirection={option === "horizontal" ? "row" : "column"}
         sx={{
           p: 0.75,
           width: 32,
           height: 1,
-          borderRight: 'solid 1px var(--border-color)',
-          ...(option === 'mini' && {
+          borderRight: "solid 1px var(--border-color)",
+          ...(option === "mini" && {
             width: 22,
           }),
-          ...(option === 'horizontal' && {
+          ...(option === "horizontal" && {
             width: 1,
             height: 22,
-            borderRight: 'none',
-            alignItems: 'center',
-            borderBottom: 'solid 1px var(--border-color)',
+            borderRight: "none",
+            alignItems: "center",
+            borderBottom: "solid 1px var(--border-color)",
           }),
         }}
       >
@@ -177,8 +183,8 @@ export function LayoutOption({ option, selected, sx, ...other }: OptionProps) {
           height: 1,
           opacity: 0.2,
           borderRadius: 0.75,
-          bgcolor: 'currentColor',
-          ...(selected && { background: 'var(--active-color)' }),
+          bgcolor: "currentColor",
+          ...(selected && { background: "var(--active-color)" }),
         }}
       />
     </Box>
@@ -187,14 +193,14 @@ export function LayoutOption({ option, selected, sx, ...other }: OptionProps) {
   const renderIcon = (
     <Box
       display="flex"
-      flexDirection={option === 'horizontal' ? 'column' : 'row'}
+      flexDirection={option === "horizontal" ? "column" : "row"}
       sx={(theme) => ({
         width: 1,
         height: 1,
-        borderRadius: 'inherit',
-        border: `solid 1px ${varAlpha(theme.vars.palette.grey['500Channel'], 0.08)}`,
+        borderRadius: "inherit",
+        border: `solid 1px ${varAlpha(theme.vars.palette.grey["500Channel"], 0.08)}`,
         ...(selected && {
-          borderColor: 'transparent',
+          borderColor: "transparent",
         }),
       })}
     >
@@ -204,7 +210,12 @@ export function LayoutOption({ option, selected, sx, ...other }: OptionProps) {
   );
 
   return (
-    <BlockOption selected={selected} icon={renderIcon} sx={{ height: 64, ...sx }} {...other} />
+    <BlockOption
+      selected={selected}
+      icon={renderIcon}
+      sx={{ height: 64, ...sx }}
+      {...other}
+    />
   );
 }
 
@@ -216,14 +227,14 @@ export function ColorOption({ option, selected, sx, ...other }: OptionProps) {
       selected={selected}
       icon={
         <SvgColor
-          src={`/assets/icons/settings/ic-sidebar-${option === 'integrate' ? 'outline' : 'filled'}.svg`}
+          src={`/assets/icons/settings/ic-sidebar-${option === "integrate" ? "outline" : "filled"}.svg`}
         />
       }
       label={option}
       sx={{
         gap: 1.5,
         height: 56,
-        textTransform: 'capitalize',
+        textTransform: "capitalize",
         ...sx,
       }}
       {...other}

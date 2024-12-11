@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
-import createCache from '@emotion/cache';
-import rtlPlugin from 'stylis-plugin-rtl';
-import { CacheProvider } from '@emotion/react';
+import createCache from "@emotion/cache";
+import { CacheProvider } from "@emotion/react";
+import { useEffect } from "react";
+import rtlPlugin from "stylis-plugin-rtl";
 
-import type { ThemeDirection } from '../types';
+import type { ThemeDirection } from "../types";
 
 // ----------------------------------------------------------------------
 
@@ -13,7 +13,7 @@ type RTLProps = {
 };
 
 const cacheRtl = createCache({
-  key: 'rtl',
+  key: "rtl",
   prepend: true,
   stylisPlugins: [rtlPlugin],
 });
@@ -23,7 +23,7 @@ export function RTL({ children, direction }: RTLProps) {
     document.dir = direction;
   }, [direction]);
 
-  if (direction === 'rtl') {
+  if (direction === "rtl") {
     return <CacheProvider value={cacheRtl}>{children}</CacheProvider>;
   }
 

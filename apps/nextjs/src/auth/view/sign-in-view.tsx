@@ -1,16 +1,16 @@
 "use client";
-import { useState } from "react";
-import Form from "@rjsf/mui";
-import Link from "@mui/material/Link";
-import Alert from "@mui/material/Alert";
-import { paths } from "src/routes/paths";
-import { RouterLink } from "src/routes/components";
-import * as S from "@effect/schema/Schema";
 import { JSONSchema } from "@effect/schema";
-import { useBoolean } from "src/hooks/use-boolean";
+import * as S from "@effect/schema/Schema";
+import Alert from "@mui/material/Alert";
+import Link from "@mui/material/Link";
+import Form from "@rjsf/mui";
 import { RJSFSchema } from "@rjsf/utils";
-import {} from "effect";
 import validator from "@rjsf/validator-ajv8";
+import {} from "effect";
+import { useState } from "react";
+import { useBoolean } from "src/hooks/use-boolean";
+import { RouterLink } from "src/routes/components";
+import { paths } from "src/routes/paths";
 
 import { FormHead } from "../components/form-head";
 
@@ -29,15 +29,17 @@ const schema: RJSFSchema = {
   required: ["email", "password"],
 };
 
-const SignInSchema = JSONSchema.make(S.Struct({
-  email: S.String,
-  password: S.String,
-}).annotations({
-  default: {
-    email: "demo@minimals.cc",
-    password: "@demo1",
-  }
-}));
+const SignInSchema = JSONSchema.make(
+  S.Struct({
+    email: S.String,
+    password: S.String,
+  }).annotations({
+    default: {
+      email: "demo@minimals.cc",
+      password: "@demo1",
+    },
+  }),
+);
 // ----------------------------------------------------------------------
 
 export function SignInView() {

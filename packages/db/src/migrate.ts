@@ -1,4 +1,3 @@
-
 import { migrate } from "drizzle-orm/node-postgres/migrator";
 
 import { db } from "./client";
@@ -13,4 +12,4 @@ async function main() {
     process.exit(1);
   }
 }
-main().then(r => r);
+main().then((r) => r);

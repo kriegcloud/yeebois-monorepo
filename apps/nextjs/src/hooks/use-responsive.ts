@@ -1,33 +1,37 @@
-import type { Breakpoint } from '@mui/material/styles';
+import type { Breakpoint } from "@mui/material/styles";
 
-import { useMemo } from 'react';
+import { useMemo } from "react";
 
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 // ----------------------------------------------------------------------
 
 type UseResponsiveReturn = boolean;
 
-export type Query = 'up' | 'down' | 'between' | 'only';
+export type Query = "up" | "down" | "between" | "only";
 
 export type Value = Breakpoint | number;
 
-export function useResponsive(query: Query, start?: Value, end?: Value): UseResponsiveReturn {
+export function useResponsive(
+  query: Query,
+  start?: Value,
+  end?: Value,
+): UseResponsiveReturn {
   const theme = useTheme();
 
   const getQuery = useMemo(() => {
     switch (query) {
-      case 'up':
+      case "up":
         return theme.breakpoints.up(start as Value);
-      case 'down':
+      case "down":
         return theme.breakpoints.down(start as Value);
-      case 'between':
+      case "between":
         return theme.breakpoints.between(start as Value, end as Value);
-      case 'only':
+      case "only":
         return theme.breakpoints.only(start as Breakpoint);
       default:
-        return theme.breakpoints.up('xs');
+        return theme.breakpoints.up("xs");
     }
   }, [theme, query, start, end]);
 
@@ -52,5 +56,5 @@ export function useWidth(): UseWidthReturn {
     return !output && matches ? key : output;
   }, null);
 
-  return width || 'xs';
+  return width || "xs";
 }

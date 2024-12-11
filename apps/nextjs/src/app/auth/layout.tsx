@@ -1,5 +1,5 @@
-import { AuthSplitLayout } from 'src/layouts/auth-split';
 import type { ReactNode } from "react";
+import { AuthSplitLayout } from "src/layouts/auth-split";
 
 // ----------------------------------------------------------------------
 
@@ -8,8 +8,9 @@ type Props = {
 };
 
 export default function Layout({ children }: Props) {
-
   return (
-    <AuthSplitLayout section={{ title: 'Hi, Welcome back' }}>{children}</AuthSplitLayout>
+    <AuthSplitLayout section={{ title: "Hi, Welcome back" }}>
+      {children}
+    </AuthSplitLayout>
   );
 }

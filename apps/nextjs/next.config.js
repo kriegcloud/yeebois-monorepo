@@ -14,23 +14,23 @@ const config = {
     "@dank/auth",
     "@dank/db",
     "@dank/ui",
-    "@dank/validators",
+    "@dank/schema",
   ],
   modularizeImports: {
-    '@mui/icons-material': {
-      transform: '@mui/icons-material/{{member}}',
+    "@mui/icons-material": {
+      transform: "@mui/icons-material/{{member}}",
     },
-    '@mui/material': {
-      transform: '@mui/material/{{member}}',
+    "@mui/material": {
+      transform: "@mui/material/{{member}}",
     },
-    '@mui/lab': {
-      transform: '@mui/lab/{{member}}',
+    "@mui/lab": {
+      transform: "@mui/lab/{{member}}",
     },
   },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ['@svgr/webpack'],
+      use: ["@svgr/webpack"],
     });
 
     return config;

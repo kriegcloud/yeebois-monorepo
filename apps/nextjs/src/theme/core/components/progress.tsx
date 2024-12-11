@@ -1,17 +1,27 @@
-import type { LinearProgressProps } from '@mui/material/LinearProgress';
-import type { Theme, CSSObject, Components } from '@mui/material/styles';
+import type { LinearProgressProps } from "@mui/material/LinearProgress";
+import type { CSSObject, Components, Theme } from "@mui/material/styles";
 
-import { varAlpha } from '../../styles';
+import { varAlpha } from "../../styles";
 
 // ----------------------------------------------------------------------
 
-const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'] as const;
+const COLORS = [
+  "primary",
+  "secondary",
+  "info",
+  "success",
+  "warning",
+  "error",
+] as const;
 
 type ColorType = (typeof COLORS)[number];
 
 // ----------------------------------------------------------------------
 
-function styleColors(ownerState: LinearProgressProps, styles: (val: ColorType) => CSSObject) {
+function styleColors(
+  ownerState: LinearProgressProps,
+  styles: (val: ColorType) => CSSObject,
+) {
   const outputStyle = COLORS.reduce((acc, color) => {
     if (ownerState.color === color) {
       acc = styles(color);
@@ -22,7 +32,7 @@ function styleColors(ownerState: LinearProgressProps, styles: (val: ColorType) =
   return outputStyle;
 }
 
-const MuiLinearProgress: Components<Theme>['MuiLinearProgress'] = {
+const MuiLinearProgress: Components<Theme>["MuiLinearProgress"] = {
   /** **************************************
    * STYLE
    *************************************** */
@@ -30,21 +40,30 @@ const MuiLinearProgress: Components<Theme>['MuiLinearProgress'] = {
     root: ({ theme, ownerState }) => {
       const styled = {
         colors: styleColors(ownerState, (color) => ({
-          backgroundColor: varAlpha(theme.vars.palette[color].mainChannel, 0.24),
+          backgroundColor: varAlpha(
+            theme.vars.palette[color].mainChannel,
+            0.24,
+          ),
         })),
         inheritColor: {
-          ...(ownerState.color === 'inherit' && {
-            '&::before': { display: 'none' },
-            backgroundColor: varAlpha(theme.vars.palette.text.primaryChannel, 0.24),
+          ...(ownerState.color === "inherit" && {
+            "&::before": { display: "none" },
+            backgroundColor: varAlpha(
+              theme.vars.palette.text.primaryChannel,
+              0.24,
+            ),
           }),
         },
       };
       return {
         borderRadius: 4,
-        ...(ownerState.variant !== 'buffer' && { ...styled.inheritColor, ...styled.colors }),
+        ...(ownerState.variant !== "buffer" && {
+          ...styled.inheritColor,
+          ...styled.colors,
+        }),
       };
     },
-    bar: { borderRadius: 'inherit' },
+    bar: { borderRadius: "inherit" },
   },
 };
 

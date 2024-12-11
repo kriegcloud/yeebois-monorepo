@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import type { IconButtonProps } from '@mui/material/IconButton';
+import type { IconButtonProps } from "@mui/material/IconButton";
 
-import { m } from 'framer-motion';
+import { m } from "framer-motion";
 
-import Badge from '@mui/material/Badge';
-import Avatar from '@mui/material/Avatar';
-import SvgIcon from '@mui/material/SvgIcon';
-import MenuItem from '@mui/material/MenuItem';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import ListItemText from '@mui/material/ListItemText';
+import Avatar from "@mui/material/Avatar";
+import Badge from "@mui/material/Badge";
+import IconButton from "@mui/material/IconButton";
+import ListItemText from "@mui/material/ListItemText";
+import MenuItem from "@mui/material/MenuItem";
+import SvgIcon from "@mui/material/SvgIcon";
+import Typography from "@mui/material/Typography";
 
-import { fToNow } from 'src/utils/format-time';
+import { fToNow } from "src/utils/format-time";
 
-import { varHover } from 'src/components/animate';
-import { Scrollbar } from 'src/components/scrollbar';
-import { usePopover, CustomPopover } from 'src/components/custom-popover';
+import { varHover } from "src/components/animate";
+import { CustomPopover, usePopover } from "src/components/custom-popover";
+import { Scrollbar } from "src/components/scrollbar";
 
 // ----------------------------------------------------------------------
 
@@ -34,7 +34,11 @@ export type ContactsPopoverProps = IconButtonProps & {
   }[];
 };
 
-export function ContactsPopover({ data = [], sx, ...other }: ContactsPopoverProps) {
+export function ContactsPopover({
+  data = [],
+  sx,
+  ...other
+}: ContactsPopoverProps) {
   const popover = usePopover();
 
   return (
@@ -46,7 +50,9 @@ export function ContactsPopover({ data = [], sx, ...other }: ContactsPopoverProp
         variants={varHover(1.05)}
         onClick={popover.onOpen}
         sx={{
-          ...(popover.open && { bgcolor: (theme) => theme.vars.palette.action.selected }),
+          ...(popover.open && {
+            bgcolor: (theme) => theme.vars.palette.action.selected,
+          }),
           ...sx,
         }}
         {...other}
@@ -54,7 +60,14 @@ export function ContactsPopover({ data = [], sx, ...other }: ContactsPopoverProp
         <SvgIcon>
           {/* https://icon-sets.iconify.design/solar/users-group-rounded-bold-duotone/  */}
           <circle cx="15" cy="6" r="3" fill="currentColor" opacity="0.4" />
-          <ellipse cx="16" cy="17" fill="currentColor" opacity="0.4" rx="5" ry="3" />
+          <ellipse
+            cx="16"
+            cy="17"
+            fill="currentColor"
+            opacity="0.4"
+            rx="5"
+            ry="3"
+          />
           <circle cx="9.001" cy="6" r="4" fill="currentColor" />
           <ellipse cx="9.001" cy="17.001" fill="currentColor" rx="7" ry="4" />
         </SvgIcon>
@@ -76,8 +89,10 @@ export function ContactsPopover({ data = [], sx, ...other }: ContactsPopoverProp
           {data.map((contact) => (
             <MenuItem key={contact.id} sx={{ p: 1 }}>
               <Badge
-                variant={contact.status as 'alway' | 'online' | 'busy' | 'offline'}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                variant={
+                  contact.status as "alway" | "online" | "busy" | "offline"
+                }
+                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                 sx={{ mr: 2 }}
               >
                 <Avatar alt={contact.name} src={contact.avatarUrl} />
@@ -85,9 +100,16 @@ export function ContactsPopover({ data = [], sx, ...other }: ContactsPopoverProp
 
               <ListItemText
                 primary={contact.name}
-                secondary={contact.status === 'offline' ? fToNow(contact.lastActivity) : ''}
-                primaryTypographyProps={{ typography: 'subtitle2' }}
-                secondaryTypographyProps={{ typography: 'caption', color: 'text.disabled' }}
+                secondary={
+                  contact.status === "offline"
+                    ? fToNow(contact.lastActivity)
+                    : ""
+                }
+                primaryTypographyProps={{ typography: "subtitle2" }}
+                secondaryTypographyProps={{
+                  typography: "caption",
+                  color: "text.disabled",
+                }}
               />
             </MenuItem>
           ))}

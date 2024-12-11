@@ -1,9 +1,9 @@
-import type { IconButtonProps } from '@mui/material/IconButton';
+import type { IconButtonProps } from "@mui/material/IconButton";
 
-import SvgIcon from '@mui/material/SvgIcon';
-import IconButton from '@mui/material/IconButton';
+import IconButton from "@mui/material/IconButton";
+import SvgIcon from "@mui/material/SvgIcon";
 
-import { varAlpha } from 'src/theme/styles';
+import { varAlpha } from "src/theme/styles";
 
 // ----------------------------------------------------------------------
 
@@ -11,28 +11,35 @@ export type NavToggleButtonProps = IconButtonProps & {
   isNavMini: boolean;
 };
 
-export function NavToggleButton({ isNavMini, sx, ...other }: NavToggleButtonProps) {
+export function NavToggleButton({
+  isNavMini,
+  sx,
+  ...other
+}: NavToggleButtonProps) {
   return (
     <IconButton
       size="small"
       sx={{
         p: 0.5,
         top: 24,
-        position: 'fixed',
-        color: 'action.active',
-        bgcolor: 'background.default',
-        transform: 'translateX(-50%)',
-        zIndex: 'var(--layout-nav-zIndex)',
-        left: isNavMini ? 'var(--layout-nav-mini-width)' : 'var(--layout-nav-vertical-width)',
-        border: (theme) => `1px solid ${varAlpha(theme.vars.palette.grey['500Channel'], 0.12)}`,
+        position: "fixed",
+        color: "action.active",
+        bgcolor: "background.default",
+        transform: "translateX(-50%)",
+        zIndex: "var(--layout-nav-zIndex)",
+        left: isNavMini
+          ? "var(--layout-nav-mini-width)"
+          : "var(--layout-nav-vertical-width)",
+        border: (theme) =>
+          `1px solid ${varAlpha(theme.vars.palette.grey["500Channel"], 0.12)}`,
         transition: (theme) =>
-          theme.transitions.create(['left'], {
-            easing: 'var(--layout-transition-easing)',
-            duration: 'var(--layout-transition-duration)',
+          theme.transitions.create(["left"], {
+            easing: "var(--layout-transition-easing)",
+            duration: "var(--layout-transition-duration)",
           }),
-        '&:hover': {
-          color: 'text.primary',
-          bgcolor: 'background.neutral',
+        "&:hover": {
+          color: "text.primary",
+          bgcolor: "background.neutral",
         },
         ...sx,
       }}
@@ -43,7 +50,7 @@ export function NavToggleButton({ isNavMini, sx, ...other }: NavToggleButtonProp
           width: 16,
           height: 16,
           ...(isNavMini && {
-            transform: 'scaleX(-1)',
+            transform: "scaleX(-1)",
           }),
         }}
       >

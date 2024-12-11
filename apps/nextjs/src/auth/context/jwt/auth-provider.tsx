@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { useMemo, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useMemo } from "react";
 
-import { useSetState } from 'src/hooks/use-set-state';
+import { useSetState } from "src/hooks/use-set-state";
 
-import axios, { endpoints } from 'src/utils/axios';
+import axios, { endpoints } from "src/utils/axios";
 
-import { STORAGE_KEY } from './constant';
-import { AuthContext } from '../auth-context';
-import { setSession, isValidToken } from './utils';
+import { AuthContext } from "../auth-context";
+import { STORAGE_KEY } from "./constant";
+import { isValidToken, setSession } from "./utils";
 
-import type { AuthState } from '../../types';
+import type { AuthState } from "../../types";
 
 // ----------------------------------------------------------------------
 
@@ -58,25 +58,29 @@ export function AuthProvider({ children }: Props) {
 
   // ----------------------------------------------------------------------
 
-  const checkAuthenticated = state.user ? 'authenticated' : 'unauthenticated';
+  const checkAuthenticated = state.user ? "authenticated" : "unauthenticated";
 
-  const status = state.loading ? 'loading' : checkAuthenticated;
+  const status = state.loading ? "loading" : checkAuthenticated;
 
   const memoizedValue = useMemo(
     () => ({
       user: state.user
         ? {
             ...state.user,
-            role: state.user?.role ?? 'admin',
+            role: state.user?.role ?? "admin",
           }
         : null,
       checkUserSession,
-      loading: status === 'loading',
-      authenticated: status === 'authenticated',
-      unauthenticated: status === 'unauthenticated',
+      loading: status === "loading",
+      authenticated: status === "authenticated",
+      unauthenticated: status === "unauthenticated",
     }),
-    [checkUserSession, state.user, status]
+    [checkUserSession, state.user, status],
   );
 
-  return <AuthContext.Provider value={memoizedValue}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={memoizedValue}>
+      {children}
+    </AuthContext.Provider>
+  );
 }

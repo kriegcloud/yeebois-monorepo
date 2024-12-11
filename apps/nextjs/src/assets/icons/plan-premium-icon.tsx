@@ -1,9 +1,9 @@
-import type { BoxProps } from '@mui/material/Box';
+import type { BoxProps } from "@mui/material/Box";
 
-import { memo } from 'react';
+import { memo } from "react";
 
-import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { useTheme } from "@mui/material/styles";
 
 // ----------------------------------------------------------------------
 
@@ -23,13 +23,16 @@ function PlanPremiumIcon({ sx, ...other }: BoxProps) {
       height="100%"
       viewBox="0 0 80 80"
       xmlns="http://www.w3.org/2000/svg"
-      sx={{ width: 48, flexShrink: 0, height: 'auto', ...sx }}
+      sx={{ width: 48, flexShrink: 0, height: "auto", ...sx }}
       {...other}
     >
       <g transform="translate(0 -9)">
         <g transform="translate(0 18.271)">
           <g transform="translate(9.167 19.932)">
-            <path fill={PRIMARY_DARK} d="M53.333 17.441H61.666V24.915999999999997H53.333z" />
+            <path
+              fill={PRIMARY_DARK}
+              d="M53.333 17.441H61.666V24.915999999999997H53.333z"
+            />
             <path
               fill={PRIMARY_DARKER}
               d="M.935 20.42L25.963 8.001a5.059 5.059 0 014.52.012L60.74 23.228a1.68 1.68 0 01.015 2.996L35.417 39.301a5.059 5.059 0 01-4.694-.029L.893 23.41a1.68 1.68 0 01.042-2.99z"
@@ -48,7 +51,10 @@ function PlanPremiumIcon({ sx, ...other }: BoxProps) {
 
         <g transform="translate(0 9.136)">
           <g transform="translate(9.167 19.932)">
-            <path fill={PRIMARY_DARK} d="M53.333 17.441H61.666V24.915999999999997H53.333z" />
+            <path
+              fill={PRIMARY_DARK}
+              d="M53.333 17.441H61.666V24.915999999999997H53.333z"
+            />
             <path
               fill={PRIMARY_DARKER}
               d="M.935 20.42L25.963 8.001a5.059 5.059 0 014.52.012L60.74 23.228a1.68 1.68 0 01.015 2.996L35.417 39.301a5.059 5.059 0 01-4.694-.029L.893 23.41a1.68 1.68 0 01.042-2.99z"
@@ -66,7 +72,10 @@ function PlanPremiumIcon({ sx, ...other }: BoxProps) {
         </g>
 
         <g transform="translate(9.167 19.932)">
-          <path fill={PRIMARY_DARK} d="M53.333 17.441H61.666V24.915999999999997H53.333z" />
+          <path
+            fill={PRIMARY_DARK}
+            d="M53.333 17.441H61.666V24.915999999999997H53.333z"
+          />
           <path
             fill={PRIMARY_DARKER}
             d="M.935 20.42L25.963 8.001a5.059 5.059 0 014.52.012L60.74 23.228a1.68 1.68 0 01.015 2.996L35.417 39.301a5.059 5.059 0 01-4.694-.029L.893 23.41a1.68 1.68 0 01.042-2.99z"

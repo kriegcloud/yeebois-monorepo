@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from "react";
 
-import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
 
-import { Iconify } from 'src/components/iconify';
+import { Iconify } from "src/components/iconify";
 
-import { svgColorClasses } from '../../svg-color';
+import { svgColorClasses } from "../../svg-color";
 
 // ----------------------------------------------------------------------
 
@@ -25,7 +25,7 @@ export function FullScreenButton() {
   }, []);
 
   return (
-    <Tooltip title={fullscreen ? 'Exit' : 'Full Screen'}>
+    <Tooltip title={fullscreen ? "Exit" : "Full Screen"}>
       <IconButton
         onClick={onToggleFullScreen}
         sx={{
@@ -42,8 +42,8 @@ export function FullScreenButton() {
         <Iconify
           icon={
             fullscreen
-              ? 'solar:quit-full-screen-square-outline'
-              : 'solar:full-screen-square-outline'
+              ? "solar:quit-full-screen-square-outline"
+              : "solar:full-screen-square-outline"
           }
         />
       </IconButton>

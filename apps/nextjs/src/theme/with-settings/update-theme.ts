@@ -1,14 +1,20 @@
-import type { SettingsState } from 'src/components/settings';
-import type { Theme, Components } from '@mui/material/styles';
+import type { Components, Theme } from "@mui/material/styles";
+import type { SettingsState } from "src/components/settings";
 
-import COLORS from '../core/colors.json';
-import PRIMARY_COLOR from './primary-color.json';
-import { components as coreComponents } from '../core/components';
-import { hexToRgbChannel, createPaletteChannel } from '../styles';
-import { primary as corePrimary, grey as coreGreyPalette } from '../core/palette';
-import { createShadowColor, customShadows as coreCustomShadows } from '../core/custom-shadows';
+import COLORS from "../core/colors.json";
+import { components as coreComponents } from "../core/components";
+import {
+  customShadows as coreCustomShadows,
+  createShadowColor,
+} from "../core/custom-shadows";
+import {
+  grey as coreGreyPalette,
+  primary as corePrimary,
+} from "../core/palette";
+import { createPaletteChannel, hexToRgbChannel } from "../styles";
+import PRIMARY_COLOR from "./primary-color.json";
 
-import type { ThemeComponents, ThemeUpdateOptions } from '../types';
+import type { ThemeComponents, ThemeUpdateOptions } from "../types";
 
 // ----------------------------------------------------------------------
 
@@ -30,14 +36,14 @@ const PRIMARY_COLORS = {
 
 export function updateCoreWithSettings(
   theme: ThemeUpdateOptions,
-  settings: SettingsState
+  settings: SettingsState,
 ): ThemeUpdateOptions {
   const { colorSchemes, customShadows } = theme;
 
   const updatedPrimary = getPalette(
     settings.primaryColor,
     corePrimary,
-    PRIMARY_COLORS[settings.primaryColor]
+    PRIMARY_COLORS[settings.primaryColor],
   );
 
   return {
@@ -53,7 +59,9 @@ export function updateCoreWithSettings(
           background: {
             ...colorSchemes?.light?.palette?.background,
             default: getBackgroundDefault(settings.contrast),
-            defaultChannel: hexToRgbChannel(getBackgroundDefault(settings.contrast)),
+            defaultChannel: hexToRgbChannel(
+              getBackgroundDefault(settings.contrast),
+            ),
           },
         },
       },
@@ -69,8 +77,8 @@ export function updateCoreWithSettings(
       ...customShadows,
       /** [1] */
       primary:
-        settings.primaryColor === 'default'
-          ? coreCustomShadows('light').primary
+        settings.primaryColor === "default"
+          ? coreCustomShadows("light").primary
           : createShadowColor(updatedPrimary.mainChannel),
     },
   };
@@ -82,13 +90,19 @@ export function updateComponentsWithSettings(settings: SettingsState) {
   const components: ThemeComponents = {};
 
   /** [2] */
-  if (settings.contrast === 'hight') {
-    const MuiCard: Components<Theme>['MuiCard'] = {
+  if (settings.contrast === "hight") {
+    const MuiCard: Components<Theme>["MuiCard"] = {
       styleOverrides: {
         root: ({ theme, ownerState }) => {
           let rootStyles = {};
-          if (typeof coreComponents?.MuiCard?.styleOverrides?.root === 'function') {
-            rootStyles = coreComponents.MuiCard.styleOverrides.root({ ownerState, theme }) ?? {};
+          if (
+            typeof coreComponents?.MuiCard?.styleOverrides?.root === "function"
+          ) {
+            rootStyles =
+              coreComponents.MuiCard.styleOverrides.root({
+                ownerState,
+                theme,
+              }) ?? {};
           }
 
           return {
@@ -108,15 +122,17 @@ export function updateComponentsWithSettings(settings: SettingsState) {
 // ----------------------------------------------------------------------
 
 function getPalette(
-  name: SettingsState['primaryColor'],
+  name: SettingsState["primaryColor"],
   initialPalette: typeof corePrimary,
-  updatedPalette: typeof corePrimary
+  updatedPalette: typeof corePrimary,
 ) {
   /** [1] */
-  return name === 'default' ? initialPalette : createPaletteChannel(updatedPalette);
+  return name === "default"
+    ? initialPalette
+    : createPaletteChannel(updatedPalette);
 }
 
-function getBackgroundDefault(contrast: SettingsState['contrast']) {
+function getBackgroundDefault(contrast: SettingsState["contrast"]) {
   /** [2] */
-  return contrast === 'default' ? '#FFFFFF' : coreGreyPalette[200];
+  return contrast === "default" ? "#FFFFFF" : coreGreyPalette[200];
 }

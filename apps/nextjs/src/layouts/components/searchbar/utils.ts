@@ -1,6 +1,9 @@
-import type { NavSectionProps, NavItemBaseProps } from 'src/components/nav-section';
+import type {
+  NavItemBaseProps,
+  NavSectionProps,
+} from "src/components/nav-section";
 
-import { flattenArray } from 'src/utils/helper';
+import { flattenArray } from "src/utils/helper";
 
 // ----------------------------------------------------------------------
 
@@ -10,8 +13,10 @@ type ItemProps = {
   path: string;
 };
 
-export function getAllItems({ data }: { data: NavSectionProps['data'] }) {
-  const reduceItems = data.map((list) => handleLoop(list.items, list.subheader)).flat();
+export function getAllItems({ data }: { data: NavSectionProps["data"] }) {
+  const reduceItems = data.flatMap((list) =>
+    handleLoop(list.items, list.subheader),
+  );
 
   const items = flattenArray(reduceItems).map((option) => {
     const group = splitPath(reduceItems, option.path);
@@ -38,7 +43,7 @@ export function applyFilter({ inputData, query }: ApplyFilterProps) {
     inputData = inputData.filter(
       (item) =>
         item.title.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
-        item.path.toLowerCase().indexOf(query.toLowerCase()) !== -1
+        item.path.toLowerCase().indexOf(query.toLowerCase()) !== -1,
     );
   }
 
@@ -65,7 +70,7 @@ export function splitPath(array: NavItemBaseProps[], key: string) {
         currItem.children.map((item: NavItemBaseProps) => ({
           path: path.concat(item.title),
           currItem: item,
-        }))
+        })),
       );
     }
   }

@@ -26,7 +26,7 @@ function rewriteRequestUrlInDevelopment(req: NextRequest) {
 export const POST = async (_req: NextRequest) => {
   // First step must be to correct the request URL.
   const req = rewriteRequestUrlInDevelopment(_req);
-  console.log(req)
+  console.log(req);
   return handlers.POST(req);
 };
 
@@ -37,8 +37,8 @@ export const GET = async (
   // First step must be to correct the request URL.
   const req = rewriteRequestUrlInDevelopment(_req);
 
-  console.log(_req)
-  console.log(props)
+  console.log(_req);
+  console.log(props);
 
   const nextauthAction = props.params.nextauth[0];
   const isExpoSignIn = req.nextUrl.searchParams.get("expo-redirect");

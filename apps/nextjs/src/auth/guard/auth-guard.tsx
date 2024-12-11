@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from "react";
 
-import { paths } from 'src/routes/paths';
-import { useRouter, usePathname, useSearchParams } from 'src/routes/hooks';
+import { usePathname, useRouter, useSearchParams } from "src/routes/hooks";
+import { paths } from "src/routes/paths";
 
-import { CONFIG } from 'src/config-global';
+import { CONFIG } from "src/config-global";
 
-import { SplashScreen } from 'src/components/loading-screen';
+import { SplashScreen } from "src/components/loading-screen";
 
-import { useAuthContext } from '../hooks';
+import { useAuthContext } from "../hooks";
 
 // ----------------------------------------------------------------------
 
@@ -35,7 +35,7 @@ export function AuthGuard({ children }: Props) {
 
       return params.toString();
     },
-    [searchParams]
+    [searchParams],
   );
 
   const checkPermissions = async (): Promise<void> => {
@@ -54,7 +54,7 @@ export function AuthGuard({ children }: Props) {
         supabase: paths.auth.supabase.signIn,
       }[method];
 
-      const href = `${signInPath}?${createQueryString('returnTo', pathname)}`;
+      const href = `${signInPath}?${createQueryString("returnTo", pathname)}`;
 
       router.replace(href);
       return;

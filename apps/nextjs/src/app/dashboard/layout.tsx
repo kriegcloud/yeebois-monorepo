@@ -1,7 +1,7 @@
-import { CONFIG } from 'src/config-global';
-import { DashboardLayout } from 'src/layouts/dashboard';
+import { CONFIG } from "src/config-global";
+import { DashboardLayout } from "src/layouts/dashboard";
 
-import { AuthGuard } from 'src/auth/guard';
+import { AuthGuard } from "src/auth/guard";
 
 // ----------------------------------------------------------------------
 
@@ -14,9 +14,5 @@ export default function Layout({ children }: Props) {
   //   return <DashboardLayout>{children}</DashboardLayout>;
   // }
 
-  return (
-
-      <DashboardLayout>{children}</DashboardLayout>
-
-  );
+  return <DashboardLayout>{children}</DashboardLayout>;
 }

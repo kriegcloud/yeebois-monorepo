@@ -1,13 +1,13 @@
-import type { BoxProps } from '@mui/material/Box';
+import type { BoxProps } from "@mui/material/Box";
 
-import { memo } from 'react';
+import { memo } from "react";
 
-import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { useTheme } from "@mui/material/styles";
 
-import { CONFIG } from 'src/config-global';
+import { CONFIG } from "src/config-global";
 
-import { BackgroundShape } from './background-shape';
+import { BackgroundShape } from "./background-shape";
 
 // ----------------------------------------------------------------------
 
@@ -33,7 +33,7 @@ function MaintenanceIllustration({ hideBackground, sx, ...other }: Props) {
       height="100%"
       viewBox="0 0 480 360"
       xmlns="http://www.w3.org/2000/svg"
-      sx={{ width: 320, maxWidth: 1, flexShrink: 0, height: 'auto', ...sx }}
+      sx={{ width: 320, maxWidth: 1, flexShrink: 0, height: "auto", ...sx }}
       {...other}
     >
       {!hideBackground && <BackgroundShape />}
@@ -122,11 +122,20 @@ function MaintenanceIllustration({ hideBackground, sx, ...other }: Props) {
         opacity="0.2"
       />
 
-      <path fill="#FF5630" d="M118.108 103.182a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
+      <path
+        fill="#FF5630"
+        d="M118.108 103.182a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"
+      />
 
-      <path fill="#FFAB00" d="M126.108 103.182a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
+      <path
+        fill="#FFAB00"
+        d="M126.108 103.182a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"
+      />
 
-      <path fill="#36B37E" d="M134.108 103.182a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
+      <path
+        fill="#36B37E"
+        d="M134.108 103.182a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"
+      />
 
       <defs>
         <linearGradient

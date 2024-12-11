@@ -1,5 +1,5 @@
 {
-  "name": "@dank/validators",
+  "name": "@dank/schema",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -19,7 +19,8 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "zod": "^3.23.8"
+    "effect": "latest",
+    "@effect/schema": "latest"
   },
   "devDependencies": {
     "@biomejs/biome": "latest",
