@@ -1,17 +1,15 @@
 import { AuthSplitLayout } from 'src/layouts/auth-split';
-
-import { GuestGuard } from 'src/auth/guard';
+import type { ReactNode } from "react";
 
 // ----------------------------------------------------------------------
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export default function Layout({ children }: Props) {
+
   return (
-    <GuestGuard>
-      <AuthSplitLayout>{children}</AuthSplitLayout>
-    </GuestGuard>
+    <AuthSplitLayout section={{ title: 'Hi, Welcome back' }}>{children}</AuthSplitLayout>
   );
 }

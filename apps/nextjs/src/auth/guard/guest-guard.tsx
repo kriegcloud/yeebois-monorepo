@@ -9,11 +9,11 @@ import { CONFIG } from 'src/config-global';
 import { SplashScreen } from 'src/components/loading-screen';
 
 import { useAuthContext } from '../hooks';
-
+import type { ReactNode } from "react";
 // ----------------------------------------------------------------------
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export function GuestGuard({ children }: Props) {
